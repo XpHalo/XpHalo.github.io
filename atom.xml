@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://xphalo.github.io/XpHalo.github/</id>
+    <id>https://xphalo.github.io</id>
     <title>Gridea</title>
-    <updated>2021-05-10T03:46:17.722Z</updated>
+    <updated>2021-05-10T08:18:01.435Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://xphalo.github.io/XpHalo.github/"/>
-    <link rel="self" href="https://xphalo.github.io/XpHalo.github/atom.xml"/>
+    <link rel="alternate" href="https://xphalo.github.io"/>
+    <link rel="self" href="https://xphalo.github.io/atom.xml"/>
     <subtitle>xp个人主页</subtitle>
-    <logo>https://xphalo.github.io/XpHalo.github/images/avatar.png</logo>
-    <icon>https://xphalo.github.io/XpHalo.github/favicon.ico</icon>
+    <logo>https://xphalo.github.io/images/avatar.png</logo>
+    <icon>https://xphalo.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://xphalo.github.io/XpHalo.github/post/hello-gridea/</id>
-        <link href="https://xphalo.github.io/XpHalo.github/post/hello-gridea/">
+        <id>https://xphalo.github.io/post/hello-gridea/</id>
+        <link href="https://xphalo.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
