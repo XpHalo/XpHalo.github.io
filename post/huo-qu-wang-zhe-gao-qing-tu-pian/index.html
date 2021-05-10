@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | XpHalo</title>
+<title>🎗获取王者高清图片 | XpHalo</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,15 +18,12 @@
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="import urllib.request
+import re
+获取主页源码
+url = 'https://pvp.qq.com/web201605/herolist.shtml'
+a = urllib.request.urlopen(ur..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -105,45 +102,71 @@ Gridea 主页
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
-            
-              <div class="feature-container" style="background-image: url('https://xphalo.github.io/post-images/hello-gridea.png')">
-              </div>
+            <h2 class="post-title">🎗获取王者高清图片</h2>
+            <div class="post-date">2021-05-10</div>
             
             <div class="post-content" v-pre>
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <p>import urllib.request<br>
+import re</p>
+<h1 id="获取主页源码">获取主页源码</h1>
+<p>url = 'https://pvp.qq.com/web201605/herolist.shtml'<br>
+a = urllib.request.urlopen(url)  # 访问网页<br>
+a = a.read()  # 读取源码<br>
+a = a.decode('gbk')  # 转码为gbk</p>
+<h1 id="获取英雄名称和id">获取英雄名称和ID</h1>
+<p>a = (re.compile('输入英雄不存在，请重新输入' + &quot;(.<em>?)&quot; + '英雄介绍', re.S).findall(a))[0]  # 取主要源码<br>
+id = re.compile('<li>&lt;a href=&quot;herodetail/' + '(.</em>?)' + '.shtml&quot;', re.S).findall(a)  # 取id<br>
+name = re.compile('height=&quot;91&quot; alt=&quot;' + '(.*?)' + '&quot;&gt;').findall(a)  # 取名字<br>
+print('本次共抓取到' + str(len(id)) + '个英雄数据')</p>
+<h1 id="询问保存路径">询问保存路径</h1>
+<p>r = True<br>
+while r:<br>
+f = input('请输入想要保存的路径：')<br>
+if f == '':<br>
+print('不能为空')<br>
+if f != '':<br>
+r = False</p>
+<h1 id="i">i</h1>
+<p>i = 0<br>
+for i in range(0, len(id) + 1):  # 对列表位置进行循环<br>
+print('正在下载' + name[i])<br>
+url1 = 'https://pvp.qq.com/web201605/herodetail/' + id[i] + '.shtml'  # 英雄主页网址<br>
+url1 = ((urllib.request.urlopen(url1)).read()).decode('gbk')  # 获取源码，并且转码为gbk<br>
+pf = re.compile('data-imgname=&quot;' + '(.*?)' + '&quot;&gt;', re.S).findall(url1)  # 取出皮肤名字<br>
+pf = pf[0]<br>
+&quot;&quot;&quot;删除沉余字符&quot;&quot;&quot;<br>
+pf = pf.replace('&amp;', '', )<br>
+pf = pf.replace('0', '', )<br>
+pf = pf.replace('1', '', )<br>
+pf = pf.replace('2', '', )<br>
+pf = pf.replace('3', '', )<br>
+pf = pf.replace('4', '', )<br>
+pf = pf.replace('5', '', )<br>
+pf = pf.replace('6', '', )<br>
+pf = pf.replace('7', '', )<br>
+pf = pf.replace('8', '', )<br>
+pf = pf.replace('9', '', )</p>
+<pre><code>pf = pf.split('|')#文本分割
+print(pf)
+
+for i1 in range(0, len(pf)):  # 对皮肤列表进行循环
+    print(name[i] + '-' + pf[i1])
+    url2 = 'https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/' + id[i] + '/' + id[i] + '-bigskin-' + str(
+        i1 + 1) + '.jpg'  # 皮肤下载地址
+    urllib.request.urlretrieve(url2, f + '/' + name[i] + '-' + pf[i1] + '.jpg')  # 下载
+</code></pre>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="https://xphalo.github.io/tag/YZfcL0gff/" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://xphalo.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
             
 
             

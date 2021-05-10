@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xphalo.github.io</id>
-    <title>Gridea</title>
-    <updated>2021-05-10T08:27:00.176Z</updated>
+    <title>XpHalo</title>
+    <updated>2021-05-10T09:19:06.581Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xphalo.github.io"/>
     <link rel="self" href="https://xphalo.github.io/atom.xml"/>
-    <subtitle>xp个人主页</subtitle>
+    <subtitle>个人博客主页</subtitle>
     <logo>https://xphalo.github.io/images/avatar.png</logo>
     <icon>https://xphalo.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, XpHalo</rights>
+    <entry>
+        <title type="html"><![CDATA[🎗获取王者高清图片]]></title>
+        <id>https://xphalo.github.io/post/huo-qu-wang-zhe-gao-qing-tu-pian/</id>
+        <link href="https://xphalo.github.io/post/huo-qu-wang-zhe-gao-qing-tu-pian/">
+        </link>
+        <updated>2021-05-10T09:14:02.000Z</updated>
+        <content type="html"><![CDATA[<p>import urllib.request<br>
+import re</p>
+<h1 id="获取主页源码">获取主页源码</h1>
+<p>url = 'https://pvp.qq.com/web201605/herolist.shtml'<br>
+a = urllib.request.urlopen(url)  # 访问网页<br>
+a = a.read()  # 读取源码<br>
+a = a.decode('gbk')  # 转码为gbk</p>
+<h1 id="获取英雄名称和id">获取英雄名称和ID</h1>
+<p>a = (re.compile('输入英雄不存在，请重新输入' + &quot;(.<em>?)&quot; + '英雄介绍', re.S).findall(a))[0]  # 取主要源码<br>
+id = re.compile('<li>&lt;a href=&quot;herodetail/' + '(.</em>?)' + '.shtml&quot;', re.S).findall(a)  # 取id<br>
+name = re.compile('height=&quot;91&quot; alt=&quot;' + '(.*?)' + '&quot;&gt;').findall(a)  # 取名字<br>
+print('本次共抓取到' + str(len(id)) + '个英雄数据')</p>
+<h1 id="询问保存路径">询问保存路径</h1>
+<p>r = True<br>
+while r:<br>
+f = input('请输入想要保存的路径：')<br>
+if f == '':<br>
+print('不能为空')<br>
+if f != '':<br>
+r = False</p>
+<h1 id="i">i</h1>
+<p>i = 0<br>
+for i in range(0, len(id) + 1):  # 对列表位置进行循环<br>
+print('正在下载' + name[i])<br>
+url1 = 'https://pvp.qq.com/web201605/herodetail/' + id[i] + '.shtml'  # 英雄主页网址<br>
+url1 = ((urllib.request.urlopen(url1)).read()).decode('gbk')  # 获取源码，并且转码为gbk<br>
+pf = re.compile('data-imgname=&quot;' + '(.*?)' + '&quot;&gt;', re.S).findall(url1)  # 取出皮肤名字<br>
+pf = pf[0]<br>
+&quot;&quot;&quot;删除沉余字符&quot;&quot;&quot;<br>
+pf = pf.replace('&amp;', '', )<br>
+pf = pf.replace('0', '', )<br>
+pf = pf.replace('1', '', )<br>
+pf = pf.replace('2', '', )<br>
+pf = pf.replace('3', '', )<br>
+pf = pf.replace('4', '', )<br>
+pf = pf.replace('5', '', )<br>
+pf = pf.replace('6', '', )<br>
+pf = pf.replace('7', '', )<br>
+pf = pf.replace('8', '', )<br>
+pf = pf.replace('9', '', )</p>
+<pre><code>pf = pf.split('|')#文本分割
+print(pf)
+
+for i1 in range(0, len(pf)):  # 对皮肤列表进行循环
+    print(name[i] + '-' + pf[i1])
+    url2 = 'https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/' + id[i] + '/' + id[i] + '-bigskin-' + str(
+        i1 + 1) + '.jpg'  # 皮肤下载地址
+    urllib.request.urlretrieve(url2, f + '/' + name[i] + '-' + pf[i1] + '.jpg')  # 下载
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://xphalo.github.io/post/hello-gridea/</id>
