@@ -23,3 +23,7 @@
 
 <!-- 如果图片放在 assets 文件夹中 -->
 <img src="./images/jianwei.png" width="400" alt="Stats" />
+<img src="./images/jianwei1.png" width="400" alt="Stats" />
+<img src="./images/taiqiu.png" width="400" alt="Stats" />
+<img src="./images/me.png" width="400" alt="Stats" />
+<img src="./images/yuxuan.png" width="400" alt="Stats" />
