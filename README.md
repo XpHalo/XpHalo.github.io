@@ -19,6 +19,6 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=XpHalo&show_icons=true&theme=radial&hide_border=true" />
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=XpHalo&layout=compact&theme=radial&hide_border=true" />
+  <img height="180" src="https://github-readme-stats.api.gist.run/api?username=XpHalo&show_icons=true&theme=radial&hide_border=true" />
+  <img height="180" src="https://github-readme-stats.api.gist.run/api/top-langs/?username=XpHalo&layout=compact&theme=radial&hide_border=true" />
 </p>
