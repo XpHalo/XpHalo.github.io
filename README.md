@@ -18,7 +18,8 @@
 
 ### 📊 GitHub Stats
 
-<p align="center">
-  <img height="180" src="https://github-readme-stats.api.gist.run/api?username=XpHalo&show_icons=true&theme=radial&hide_border=true" />
-  <img height="180" src="https://github-readme-stats.api.gist.run/api/top-langs/?username=XpHalo&layout=compact&theme=radial&hide_border=true" />
-</p>
+<!-- 如果图片直接放在仓库根目录下 -->
+![我的统计图]
+
+<!-- 如果图片放在 assets 文件夹中 -->
+<img src="./images/jianwei.png" width="400" alt="Stats" />
