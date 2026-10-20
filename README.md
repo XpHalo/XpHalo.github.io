@@ -19,19 +19,12 @@
 ### 📊 GitHub Stats
 
 <!-- 如果图片直接放在仓库根目录下 -->
-![我的统计图]
-
-<!-- 如果图片放在 assets 文件夹中 -->
-<!--img src="./images/jianwei.png" width="400" alt="Stats" />
-<img src="./images/jianwei1.png" width="400" alt="Stats" />
-<img src="./images/taiqiu.png" width="400" alt="Stats" />
-<img src="./images/me.png" width="400" alt="Stats" />
-<img src="./images/yuxuan.png" width="400" alt="Stats" />
+![金兰图]
 -->
 <p align="center">
-  <img src="./images/jianwei.png" width="45%" />
-  <img src="./images/jianwei1.png" width="45%" />
-  <img src="./images/taiqiu.png" width="45%" />
-  <img src="./images/me.png" width="45%" />
-  <img src="./images/yuxuan.png" width="45%" />
+  <img src="./images/jianwei.png" width="30%" />
+  <img src="./images/jianwei1.png" width="30%" />
+  <img src="./images/taiqiu.png" width="30%" />
+  <img src="./images/me.png" width="30%" />
+  <img src="./images/yuxuan.png" width="30%" />
 </p>
