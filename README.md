@@ -22,8 +22,10 @@
 ![我的统计图]
 
 <!-- 如果图片放在 assets 文件夹中 -->
-<img src="./images/jianwei.png" width="400" alt="Stats" />
+<!--img src="./images/jianwei.png" width="400" alt="Stats" />
 <img src="./images/jianwei1.png" width="400" alt="Stats" />
 <img src="./images/taiqiu.png" width="400" alt="Stats" />
 <img src="./images/me.png" width="400" alt="Stats" />
 <img src="./images/yuxuan.png" width="400" alt="Stats" />
+-->
+![图1]("./images/jianwei.png) ![图2](./images/jianwei1.png) ![图3](./images/taiqiu.png) ![图4](./images/me.png) ![图5](./images/yuxuan.png)
