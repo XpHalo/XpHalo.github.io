@@ -2,7 +2,7 @@
 <h3 align="center">A passionate developer building awesome projects</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=36BCF7&width=435&lines=Full+Stack+Developer;Open+Source+Enthusiast;Continuous+Learner" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=36BCF7&width=435&lines=Hello+MY+name+xin+pan;Open+Source+Enthusiast;Continuous+Learner" alt="Typing SVG" />
 </p>
 
 ---
