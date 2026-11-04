@@ -200,9 +200,13 @@
             <span class="px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-brand border border-brand/30 text-xs font-semibold">26 岁</span>
             <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold">系统研发工程师</span>
           </div>
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
-            你好！我是 Jayden Xin。主要从事服务器底层诊断、大数据集群运维与自动化测试工具链研发。平时热衷于编写高执行效率的 Shell 自动化脚本与 Python 驱动框架，对硬件底层（PCIe / NVMe / DDR / UEFI / BMC）异常定位及自动化验证具有扎实的实践经验。
-          </p>
+          <div class="relative min-h-[90px] sm:min-h-[72px]">
+  <p id="bio-text" class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base font-normal inline">
+    <!-- 文字将通过打字机动效自动写入 -->
+  </p>
+  <!-- 尾部跳动的青色光标 -->
+  <span id="bio-cursor" class="inline-block w-2 h-4 sm:h-5 bg-brand ml-1 align-middle animate-bounce"></span>
+</div>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono">
             <div class="p-3 bg-slate-50 dark:bg-darkBg rounded-xl border border-slate-200 dark:border-darkBorder">
               <span class="text-slate-500 block">方向</span>
@@ -466,6 +470,67 @@
   <script>
     // 初始化图标
     lucide.createIcons();
+    // --- 关于我 (Who am I) 文字流式打字 + 动态跳跃特效 ---
+const bioContent = "你好！我是 Jayden Xin。主要从事服务器底层诊断、大数据集群运维与自动化测试工具链研发。平时热衷于编写高执行效率的 Shell 自动化脚本与 Python 驱动框架，对硬件底层（PCIe / NVMe / DDR / UEFI / BMC）异常定位及自动化验证具有扎实的实践经验。";
+
+// 需要加粗高亮跳动的核心技术词
+const highlightKeywords = [
+  "Jayden Xin",
+  "服务器底层诊断",
+  "大数据集群运维",
+  "Shell 自动化脚本",
+  "Python 驱动框架",
+  "硬件底层",
+  "PCIe / NVMe / DDR / UEFI / BMC"
+];
+
+let bioIndex = 0;
+let hasTyped = false;
+
+function typeBioText() {
+  const bioElement = document.getElementById("bio-text");
+  const cursor = document.getElementById("bio-cursor");
+  if (!bioElement) return;
+
+  if (bioIndex < bioContent.length) {
+    bioElement.textContent += bioContent.charAt(bioIndex);
+    bioIndex++;
+    // 打字速度间隔 (毫秒)
+    setTimeout(typeBioText, 25);
+  } else {
+    // 打字结束：为关键词添加高亮及呼吸跳动动画
+    let formattedHTML = bioContent;
+    highlightKeywords.forEach(keyword => {
+      const regex = new RegExp(keyword, "g");
+      formattedHTML = formattedHTML.replace(
+        regex, 
+        `<span class="font-bold text-cyan-600 dark:text-brand inline-block hover:-translate-y-1 transition-transform duration-200 cursor-default">${keyword}</span>`
+      );
+    });
+    bioElement.innerHTML = formattedHTML;
+
+    // 光标变为微弱呼吸闪烁，随后自动淡化
+    if (cursor) {
+      cursor.classList.remove("animate-bounce");
+      cursor.classList.add("animate-pulse");
+    }
+  }
+}
+
+// 监听滚动：当滚动到“关于我”区域时触发动画
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !hasTyped) {
+      hasTyped = true;
+      typeBioText();
+    }
+  });
+}, { threshold: 0.3 });
+
+const whoamiSection = document.getElementById("whoami");
+if (whoamiSection) {
+  observer.observe(whoamiSection);
+}
 
     // 1. 关灯/开灯主题逻辑
     function initTheme() {
