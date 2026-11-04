@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayden Xin | Full-stack Developer & Systems Engineer</title>
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#06b6d4',
+            darkBg: '#0b0f19',
+            darkCard: '#111827',
+            darkBorder: '#1f2937'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes pulse-slow { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.3; } }
+    .bg-grid {
+      background-size: 36px 36px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-darkBg text-slate-200 font-sans selection:bg-brand selection:text-black min-h-screen flex flex-col relative">
+
+  <!-- 顶部导航栏 -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-darkBg/80 border-b border-darkBorder">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+        <span class="text-brand">&lt;/&gt;</span> Jayden<span class="text-brand">.dev</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#whoami" class="hover:text-brand transition-colors">Who am I?</a>
+        <a href="#skills" class="hover:text-brand transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-brand transition-colors">Projects</a>
+        <a href="#blog" class="hover:text-brand transition-colors">Blog</a>
+        <a href="#contact" class="hover:text-brand transition-colors">Contact</a>
+      </nav>
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 border border-brand text-brand hover:bg-brand/10 rounded-lg text-sm transition-all font-semibold">
+        <i data-lucide="mail" class="w-4 h-4"></i> Get in touch
+      </a>
+    </div>
+  </header>
+
+  <!-- 页面主体 -->
+  <main class="flex-grow max-w-6xl mx-auto px-6 space-y-28 py-16 bg-grid">
+
+    <!-- Hero 区域 -->
+    <section id="hero" class="pt-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+      <div class="lg:w-7/12 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/60 border border-brand/30 text-brand text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-brand animate-ping"></span>
+          System & Big Data Engineer • Online
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Hey! I am <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-blue-500">Jayden Xin</span>
+        </h1>
+        <p class="text-2xl text-slate-300 font-medium">
+          A <span class="text-brand font-semibold" id="typing-text">Full-stack Developer</span>
+        </p>
+        <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl">
+          目前专注于 <strong class="text-slate-200">服务器系统与大数据底层运维 / Shell 自动化脚本 / Python 架构开发</strong>。具备从高可用底层基础设施建设到敏捷全栈业务落地的工程解决能力。
+        </p>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#projects" class="px-6 py-3 bg-brand text-slate-950 font-bold rounded-lg hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20">
+            浏览项目案例
+          </a>
+          <a href="#blog" class="px-6 py-3 bg-darkCard border border-darkBorder hover:border-brand/40 text-slate-300 font-semibold rounded-lg transition-all">
+            技术随笔与文章
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧终端装饰卡片 -->
+      <div class="lg:w-5/12 w-full max-w-md">
+        <div class="bg-darkCard rounded-xl border border-darkBorder shadow-2xl overflow-hidden">
+          <div class="bg-slate-900 px-4 py-3 border-b border-darkBorder flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span class="text-xs text-slate-500 font-mono ml-2">jayden@datacenter:~</span>
+          </div>
+          <div class="p-6 font-mono text-sm space-y-3 leading-relaxed">
+            <p class="text-brand">$ whoami</p>
+            <p class="text-slate-300">Jayden Xin, Age 26</p>
+            <p class="text-brand">$ cat current_focus.txt</p>
+            <p class="text-slate-400">- Server Big Data Architecture<br>- Shell Script Automation<br>- Python Infrastructure Dev<br>- UEFI / BMC Diagnostics</p>
+            <p class="text-brand">$ contact --primary</p>
+            <p class="text-green-400">2226273411@qq.com</p>
+            <p class="text-brand flex items-center gap-1">$ <span class="w-2 h-4 bg-brand inline-block animate-pulse"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关于我 (Who am I?) -->
+    <section id="whoami" class="space-y-6 pt-12 border-t border-darkBorder">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+        <i data-lucide="user" class="text-brand"></i> 关于我 (Who am I?)
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-darkCard p-6 rounded-xl border border-darkBorder space-y-2">
+          <h3 class="text-slate-400 text-sm">基本身份</h3>
+          <p class="text-xl font-bold text-white">系统架构 & 全栈工程师</p>
+          <p class="text-sm text-slate-400">注重高可靠、底层硬件控制与高并发服务器集群建设。</p>
+        </div>
+        <div class="bg-darkCard p-6 rounded-xl border border-darkBorder space-y-2">
+          <h3 class="text-slate-400 text-sm">业务核心</h3>
+          <p class="text-xl font-bold text-white">服务器大数据与诊断</p>
+          <p class="text-sm text-slate-400">擅长 Linux 调优、内存/PCIe 诊断脚本、自动化测试框架构建。</p>
+        </div>
+        <div class="bg-darkCard p-6 rounded-xl border border-darkBorder space-y-2">
+          <h3 class="text-slate-400 text-sm">常驻终端</h3>
+          <p class="text-xl font-bold text-white">Linux CLI / SSH</p>
+          <p class="text-sm text-slate-400">高效沉浸在 Shell、Python 及轻量级高扩展 Web 技术流中。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能栈 (Skills) -->
+    <section id="skills" class="space-y-6 pt-12 border-t border-darkBorder">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+        <i data-lucide="cpu" class="text-brand"></i> 技术储备 (Skills)
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Python 3.x</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Bash / Shell 脚本自动化</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Linux Kernel / Ubuntu / Debian</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Server Big Data (Hadoop/Spark)</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">BMC / IPMI / PCIe & DDR 自动化测试</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Full-Stack (React / Tailwind / Node.js)</span>
+        <span class="px-4 py-2 rounded-lg bg-darkCard border border-darkBorder text-sm font-mono text-cyan-400">Git / CI/CD 持续集成</span>
+      </div>
+    </section>
+
+    <!-- 项目展示 (Projects) -->
+    <section id="projects" class="space-y-6 pt-12 border-t border-darkBorder">
+      <div class="flex justify-between items-end">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <i data-lucide="folder-git-2" class="text-brand"></i> 精选工程 (Projects)
+        </h2>
+        <span class="text-xs text-slate-500 font-mono">持续迭代中...</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 项目 1 -->
+        <div class="bg-darkCard p-6 rounded-xl border border-darkBorder hover:border-brand/50 transition-all space-y-4 group">
+          <div class="flex justify-between items-start">
+            <h3 class="text-lg font-bold text-white group-hover:text-brand transition-colors">服务器软硬件自动化诊断框架 (UniDiag Tool Suite)</h3>
+            <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-brand transition-colors"></i>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            基于 Python 与 YAML 驱动的高并发集群硬件自动化验证框架，集成 CPU、DDR、NVMe、PCIe 交换芯片底层状态与性能校验。
+          </p>
+          <div class="flex gap-2 text-xs font-mono text-slate-400 pt-2">
+            <span>#Python</span> <span>#Linux</span> <span>#IPMI</span> <span>#Automation</span>
+          </div>
+        </div>
+        <!-- 项目 2 -->
+        <div class="bg-darkCard p-6 rounded-xl border border-darkBorder hover:border-brand/50 transition-all space-y-4 group">
+          <div class="flex justify-between items-start">
+            <h3 class="text-lg font-bold text-white group-hover:text-brand transition-colors">分布式大数据流水线与健康巡检系统</h3>
+            <i data-lucide="external-link" class="w-5 h-5 text-slate-500 group-hover:text-brand transition-colors"></i>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            用于集群大规模日志实时捕获与指标异常报警的 Shell/Python 守护进程架构，显著提升运维应急响应速度与节点健康度。
+          </p>
+          <div class="flex gap-2 text-xs font-mono text-slate-400 pt-2">
+            <span>#Shell</span> <span>#BigData</span> <span>#DevOps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 博客文章 (Blog) -->
+    <section id="blog" class="space-y-6 pt-12 border-t border-darkBorder">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+        <i data-lucide="book-open" class="text-brand"></i> 技术随笔 (Blog)
+      </h2>
+      <div class="space-y-4">
+        <!-- 文章 1 -->
+        <div onclick="openModal('服务器 UEFI DXE 阶段 PcdDxe 断言错误排查实录', '在刷新 AMD/Intel 平台服务器固件时，常出现 `PcdDxe ASSERT: (GetSize == DxePcdGetSize)` 错误。核心症结在于旧 NVRAM 动态数据未在刷机阶段擦除，与新镜像 PCD 表结构冲突，必须通过强制清空 CMOS、取消保留 NVRAM 或使用正式版 Release 固件解决。')" 
+             class="bg-darkCard p-5 rounded-xl border border-darkBorder hover:border-brand/40 transition-all flex justify-between items-center cursor-pointer">
+          <div class="space-y-1">
+            <h3 class="text-base sm:text-lg font-semibold text-white hover:text-brand transition-colors">服务器 UEFI DXE 阶段 PcdDxe 断言错误排查实录</h3>
+            <p class="text-xs text-slate-400">探讨 NVRAM 变量残留冲突与底软固件更新自救方案</p>
+          </div>
+          <span class="text-xs font-mono text-brand whitespace-nowrap ml-4">阅读详情 &rarr;</span>
+        </div>
+        <!-- 文章 2 -->
+        <div onclick="openModal('在 Ubuntu 下搭建与测试极简 TFTP 服务的标准姿势', 'TFTP 是嵌入式与单板装机最常用的 UDP 传输服务。配置关键在于 tftpd-hpa 的 TFTP_OPTIONS 参数需包含 `--secure --create`，且目录权限必须设置为宽松读取，否则会导致对端 File Not Found。')" 
+             class="bg-darkCard p-5 rounded-xl border border-darkBorder hover:border-brand/40 transition-all flex justify-between items-center cursor-pointer">
+          <div class="space-y-1">
+            <h3 class="text-base sm:text-lg font-semibold text-white hover:text-brand transition-colors">在 Ubuntu 下搭建与测试极简 TFTP 服务的标准姿势</h3>
+            <p class="text-xs text-slate-400">详解 tftpd-hpa 权限排错与局域网设备互联机制</p>
+          </div>
+          <span class="text-xs font-mono text-brand whitespace-nowrap ml-4">阅读详情 &rarr;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系方式 (Contact) -->
+    <section id="contact" class="space-y-6 pt-12 border-t border-darkBorder">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+        <i data-lucide="send" class="text-brand"></i> 联系我 (Contact)
+      </h2>
+      <div class="bg-darkCard p-8 rounded-xl border border-darkBorder max-w-xl space-y-4">
+        <p class="text-slate-300">对服务器底层开发、大数据架构以及全栈项目合作感兴趣？欢迎随时通过邮件联系：</p>
+        <div class="flex items-center gap-3 p-3 bg-slate-900 border border-darkBorder rounded-lg font-mono text-sm text-slate-200">
+          <span id="email-address" class="flex-grow">2226273411@qq.com</span>
+          <button onclick="copyEmail()" class="px-3 py-1.5 bg-brand text-slate-950 font-semibold rounded text-xs hover:bg-cyan-400 transition-all flex items-center gap-1">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> 复制邮箱
+          </button>
+        </div>
+        <a href="mailto:2226273411@qq.com" class="inline-block text-xs text-brand hover:underline">点击直接唤起系统邮件客户端 &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 文章阅读弹窗 Modal -->
+  <div id="article-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-darkCard border border-darkBorder max-w-2xl w-full rounded-xl p-6 sm:p-8 space-y-4 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white pr-8"></h3>
+      <div id="modal-body" class="text-slate-300 text-sm sm:text-base leading-relaxed py-2 border-t border-darkBorder max-h-[60vh] overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- 底部版权 -->
+  <footer class="border-t border-darkBorder py-8 text-center text-xs text-slate-500">
+    <p>© 2026 Jayden Xin. Hosted on GitHub Pages.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    function openModal(title, body) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-body').innerText = body;
+      document.getElementById('article-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('article-modal').classList.add('hidden');
+    }
+
+    function copyEmail() {
+      const email = document.getElementById('email-address').innerText;
+      navigator.clipboard.writeText(email).then(() => {
+        alert('邮箱已复制到剪贴板: ' + email);
+      });
+    }
+  </script>
+</body>
+</html>
