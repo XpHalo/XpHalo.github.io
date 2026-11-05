@@ -899,7 +899,7 @@ if (whoamiSection) {
       }
     }, 1300); // 在屏幕中间驻留停留 1.3 秒，然后弹开
   });
-// --- 纯二进制 01 黑客代码雨 (Matrix Rain) ---
+// --- 升级版：高对比度霓虹发光代码雨 (Matrix Rain) ---
   function initMatrixRain() {
     const canvas = document.getElementById('matrix-bg');
     if (!canvas) return;
@@ -908,48 +908,43 @@ if (whoamiSection) {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     
-    // 纯二进制字符集：只有 0 和 1
-    const chars = ['0', '1'];
-    
-    // 如果想要加上少量十六进制或极客符号，也可以用这行：
-    // const chars = '0101010101010101010123456789ABCDEF<>/{}$#*'.split('');
-
-    const fontSize = 16;
+    // 黑客帝国混合字符集
+    const chars = '0123456789ABCDEF$#@%&*<>/\\[]{}+=-01010101010101010101'.split('');
+    const fontSize = 15;
     let columns = Math.floor(width / fontSize);
     let drops = [];
     
     for (let x = 0; x < columns; x++) {
-      drops[x] = Math.floor(Math.random() * -50);
+      drops[x] = Math.floor(Math.random() * -50); // 随机错开初始高度
     }
     
     function draw() {
-      // 尾迹擦除色（深底微透）
+      // 关闭发光以擦除拖尾底色（保持背景半透渐隐）
       ctx.shadowBlur = 0;
-      ctx.fillStyle = 'rgba(9, 13, 22, 0.08)';
+      ctx.fillStyle = 'rgba(9, 13, 22, 0.08)'; // 拖尾更柔和持久
       ctx.fillRect(0, 0, width, height);
       
       ctx.font = 'bold ' + fontSize + 'px monospace';
       
       for (let i = 0; i < drops.length; i++) {
-        // 随机选择 0 或 1
         const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
         
-        // 头部下落字符亮白光，拖尾字符青蓝荧光
-        if (Math.random() > 0.88) {
-          ctx.fillStyle = '#ffffff';
+        // 头部第 1 个字符亮白带发光，后面的字符为鲜艳青色
+        if (Math.random() > 0.85) {
+          ctx.fillStyle = '#ffffff'; // 头部高亮白光
           ctx.shadowColor = '#22d3ee';
           ctx.shadowBlur = 10;
         } else {
-          ctx.fillStyle = '#06b6d4'; // 青蓝主色（若想换经典绿可改为 #22c55e）
+          ctx.fillStyle = '#06b6d4'; // 主体青蓝色 (如果喜欢黑客绿可改成 #22c55e)
           ctx.shadowColor = '#06b6d4';
           ctx.shadowBlur = 6;
         }
         
         ctx.fillText(text, x, y);
         
-        // 下落到底部后重置到顶部
+        // 超出屏幕高度后按概率重置到顶部
         if (y > height && Math.random() > 0.975) {
           drops[i] = 0;
         }
@@ -957,6 +952,7 @@ if (whoamiSection) {
       }
     }
     
+    // 约 30 FPS 平滑运行
     let timer = setInterval(draw, 33);
     
     window.addEventListener('resize', () => {
@@ -966,6 +962,12 @@ if (whoamiSection) {
       drops = [];
       for (let x = 0; x < columns; x++) drops[x] = Math.floor(Math.random() * -50);
     });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    initMatrixRain();
+  });
+  }
 </script>
 </body>
 </html>
