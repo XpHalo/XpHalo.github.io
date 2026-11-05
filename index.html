@@ -50,6 +50,8 @@
 
   <!-- 开场幕布动效 (Splash Intro Screen) -->
   <div id="splash-screen" class="fixed inset-0 z-50 bg-[#070b12] flex flex-col items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]">
+    <!-- 动态黑客代码雨背景 (仅暗色模式显示，透明度 25%，处于最底层) -->
+  <canvas id="matrix-bg" class="fixed inset-0 z-0 w-full h-full pointer-events-none opacity-25 hidden dark:block"></canvas>
     <div class="flex flex-col items-center select-none">
       <!-- 居中发光网址 -->
       <div class="text-2xl sm:text-4xl md:text-5xl font-mono font-extrabold tracking-wider text-white flex items-center gap-1.5 drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
@@ -97,9 +99,8 @@
       </div>
     </div>
   </header>
-
-  <!-- 页面主体容器 -->
-  <main class="flex-grow max-w-6xl mx-auto px-6 space-y-24 py-12 bg-grid w-full">
+  <!-- 页面主体容器增加了 relative 和 z-10 -->
+  <main class="flex-grow max-w-6xl mx-auto px-6 space-y-24 py-12 bg-grid w-full relative z-10">
 
     <!-- 1. Hero 区域：左侧自述 + 右侧全功能交互式 Linux 终端 -->
     <section id="hero" class="pt-6 flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
@@ -480,8 +481,8 @@
     <i data-lucide="arrow-up" class="w-5 h-5"></i>
   </a>
 
-  <!-- 底部页脚 -->
-  <footer class="border-t border-slate-200 dark:border-darkBorder py-8 text-center text-xs text-slate-500">
+  <!-- 底部页脚增加了 relative 和 z-10 -->
+  <footer class="border-t border-slate-200 dark:border-darkBorder py-8 text-center text-xs text-slate-500 relative z-10 bg-white/50 dark:bg-darkBg/50 backdrop-blur-sm">
     <p>© 2026 Jayden Xin. All rights reserved. Hosted on GitHub / Vercel.</p>
   </footer>
 
@@ -897,6 +898,68 @@ if (whoamiSection) {
         }, 750);
       }
     }, 1300); // 在屏幕中间驻留停留 1.3 秒，然后弹开
+  });
+  // --- 黑客风代码雨背景特效 (Matrix Rain) ---
+  function initMatrixRain() {
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+    
+    // 动态调整画布尺寸以铺满屏幕
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    
+    // 黑客字符集（包含片假名、拉丁字母和数字）
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン'.split('');
+    
+    const fontSize = 14;
+    let columns = width / fontSize; 
+    let drops = [];
+    
+    // 初始化所有列的下落 Y 坐标
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+    
+    function draw() {
+      // 填充半透明的深色背景，制造代码尾迹的渐隐效果（配合你的深色背景色 #090d16）
+      ctx.fillStyle = 'rgba(9, 13, 22, 0.1)';
+      ctx.fillRect(0, 0, width, height);
+      
+      // 设置代码雨的颜色为博客主题色青色
+      ctx.fillStyle = '#06b6d4'; 
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        // 随机抽取一个字符
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        
+        // 绘制字符
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        // 如果字符下落到底部，且达到一定随机概率，则将该列重置到顶部
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    
+    // 每 33 毫秒刷新一帧 (~30FPS，保证性能不过载)
+    let rainInterval = setInterval(draw, 33);
+    
+    // 监听窗口缩放，自动重置画布尺寸
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      columns = width / fontSize;
+      drops = [];
+      for (let x = 0; x < columns; x++) drops[x] = 1;
+    });
+  }
+
+  // 页面加载完成后启动代码雨
+  window.addEventListener('DOMContentLoaded', () => {
+    initMatrixRain();
   });
 </script>
 </body>
