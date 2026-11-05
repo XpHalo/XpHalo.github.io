@@ -51,7 +51,7 @@
   <!-- 开场幕布动效 (Splash Intro Screen) -->
   <div id="splash-screen" class="fixed inset-0 z-50 bg-[#070b12] flex flex-col items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]">
     <!-- 动态黑客代码雨背景 (仅暗色模式显示，透明度 25%，处于最底层) -->
-  <canvas id="matrix-bg" class="fixed inset-0 z-0 w-full h-full pointer-events-none opacity-25 hidden dark:block"></canvas>
+   <canvas id="matrix-bg" class="fixed inset-0 z-0 w-full h-full pointer-events-none opacity-70 hidden dark:block"></canvas>
     <div class="flex flex-col items-center select-none">
       <!-- 居中发光网址 -->
       <div class="text-2xl sm:text-4xl md:text-5xl font-mono font-extrabold tracking-wider text-white flex items-center gap-1.5 drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
@@ -899,65 +899,71 @@ if (whoamiSection) {
       }
     }, 1300); // 在屏幕中间驻留停留 1.3 秒，然后弹开
   });
-  // --- 黑客风代码雨背景特效 (Matrix Rain) ---
+// --- 升级版：高对比度霓虹发光代码雨 (Matrix Rain) ---
   function initMatrixRain() {
     const canvas = document.getElementById('matrix-bg');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     
-    // 动态调整画布尺寸以铺满屏幕
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     
-    // 黑客字符集（包含片假名、拉丁字母和数字）
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン'.split('');
-    
-    const fontSize = 14;
-    let columns = width / fontSize; 
+    // 黑客帝国混合字符集
+    const chars = '0123456789ABCDEF$#@%&*<>/\\[]{}+=-~ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ'.split('');
+    const fontSize = 15;
+    let columns = Math.floor(width / fontSize);
     let drops = [];
     
-    // 初始化所有列的下落 Y 坐标
     for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
+      drops[x] = Math.floor(Math.random() * -50); // 随机错开初始高度
     }
     
     function draw() {
-      // 填充半透明的深色背景，制造代码尾迹的渐隐效果（配合你的深色背景色 #090d16）
-      ctx.fillStyle = 'rgba(9, 13, 22, 0.1)';
+      // 关闭发光以擦除拖尾底色（保持背景半透渐隐）
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = 'rgba(9, 13, 22, 0.08)'; // 拖尾更柔和持久
       ctx.fillRect(0, 0, width, height);
       
-      // 设置代码雨的颜色为博客主题色青色
-      ctx.fillStyle = '#06b6d4'; 
-      ctx.font = fontSize + 'px monospace';
+      ctx.font = 'bold ' + fontSize + 'px monospace';
       
       for (let i = 0; i < drops.length; i++) {
-        // 随机抽取一个字符
         const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
         
-        // 绘制字符
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        // 头部第 1 个字符亮白带发光，后面的字符为鲜艳青色
+        if (Math.random() > 0.85) {
+          ctx.fillStyle = '#ffffff'; // 头部高亮白光
+          ctx.shadowColor = '#22d3ee';
+          ctx.shadowBlur = 10;
+        } else {
+          ctx.fillStyle = '#06b6d4'; // 主体青蓝色 (如果喜欢黑客绿可改成 #22c55e)
+          ctx.shadowColor = '#06b6d4';
+          ctx.shadowBlur = 6;
+        }
         
-        // 如果字符下落到底部，且达到一定随机概率，则将该列重置到顶部
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+        ctx.fillText(text, x, y);
+        
+        // 超出屏幕高度后按概率重置到顶部
+        if (y > height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
       }
     }
     
-    // 每 33 毫秒刷新一帧 (~30FPS，保证性能不过载)
-    let rainInterval = setInterval(draw, 33);
+    // 约 30 FPS 平滑运行
+    let timer = setInterval(draw, 33);
     
-    // 监听窗口缩放，自动重置画布尺寸
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      columns = width / fontSize;
+      columns = Math.floor(width / fontSize);
       drops = [];
-      for (let x = 0; x < columns; x++) drops[x] = 1;
+      for (let x = 0; x < columns; x++) drops[x] = Math.floor(Math.random() * -50);
     });
   }
 
-  // 页面加载完成后启动代码雨
   window.addEventListener('DOMContentLoaded', () => {
     initMatrixRain();
   });
